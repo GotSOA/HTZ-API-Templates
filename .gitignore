@@ -26,6 +26,7 @@ local.properties
 # You may want to remove the sharp symbols here if you are using Maven 
 .project
 .classpath
+.gitignore
 
 # External tool builders
 .externalToolBuilders/
