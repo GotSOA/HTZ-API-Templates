@@ -1,0 +1,47 @@
+GAPS based on TOC of doc from Amith
+-----------------------------------
+Audience: my definition of audience was more about projects/systems that will consume this service
+Use Cases/Applications: GAP
+Requirements 
+	. Business Requirements: GAP
+	. Functionl Requirements: GAP
+	. Technical Requirements: NEW
+Assumptions (both Business and Technical): GAP
+User Stories (I removed 'Technical Overview' because should not be part of user stories)
+Technical Design
+	. Sequence Diagrams: covereed: 1 overall diagram, 1 per API = 4 total
+	. Data Objects/API Definitions: covered
+. Data Mapping: let's agree of the definition of mappings: my definition of mappings is:
+		. experience API contract to Canonical (inside the experience layer)
+		. Canonical to End System format (inside the system layer)
+
+		. Other external mappings I feel are outside the scope of this template
+		
+Design Decision and Alternative Considerations: GAP
+Security & Encryption: partially covered, adding sub-sections
+	. PII encryption
+	. encryption at rest
+	. encryption of specific fields within request or response payload, in addition to SSL
+Performance: covered in SLA section
+Deployment considerations: GAP, agree need to cover availability and redundancy
+Quality Assurance: GAP
+	. Unit Tests: let's define a reasonable code coverage (e.g. each use case needs 1 happy path and 1 unhappy path
+	. QA tools, automation, load...
+	. System Tests: GAP
+	. Integration Tests: GAP
+	. Acceptance Criteria: I moved it as sub-section of QA, need an acceptance criteria for each use case
+	
+Error Handling: I feel that all APIs should be relying on a unique ErrorHandling / Notification system (built as a system layer app)
+				For each API, we should define how to report errors - commonly to all API methods or on a use case by use case basis (*).
+				(*) Required to define the unhappy path use cases for unit testing and integration testing.
+				
+Logging Framework: OUT OF SCOPE - should be part of an overarching documentation providing consistency in logging approach and tooling
+to all APIs within Hertz
+
+Management, Monitoring and Maintenance: GAP
+	. define ports to monitor
+	. define list of business events
+	. define alerts in cloudhub for unhealthy conditions
+	. define list of Ops Team recipient of email alerts
+	
+Additional Information: OUT OF SCOPE
