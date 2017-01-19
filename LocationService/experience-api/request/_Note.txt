@@ -1,0 +1,1 @@
+obviously endpoints with GET don't need a request.sjon file.

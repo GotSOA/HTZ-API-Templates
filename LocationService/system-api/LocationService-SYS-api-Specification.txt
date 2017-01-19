@@ -1,0 +1,14 @@
+Spec for LocationService SYSTEM API
+
+{WIP}
+Cover all the topics listed in my quick demo 
+the other day.
+
+The Diagram (companion file in same folder) should describe 
+the workflow between Process and System API.
+
+The Diagram should be explicit in order to describe the service
+endpoints behavior (sync or async).
+
+Whether System publishes to or consumes from message topics.
+ 

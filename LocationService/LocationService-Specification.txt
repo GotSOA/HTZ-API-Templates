@@ -1,0 +1,142 @@
+Spec for LocationService Overall
+
+The Diagram (companion file in same folder) should describe 
+the entire workflow from consumer request to consumer response
+flowing through all 3 layers: EXP, PRO & SYS. 
+
+For purpose of creating a template, let's consider a
+LocationService with 5 methods (a single http(s) endpoint with 5 REST methods.
+. AddLocation
+. UpdateLocation
+. Remove Location
+. Find Location
+. List Locations (all)
+
+We want to capture the contract specifics of all 5 methods, 
+throughout all 3 API layers. SO we need to end up with 15 contracts:
+. 5 between Consuming app/User and the experience api (*)
+. 5 between Consuming experience and process apis (**)
+. 5 between Consuming process and system apis (***)
+
+(*) are 'public' facing API endpoints and will be consumed by external systems 
+and customers throughout the enterprise.
+
+(**) & (***) are internal endpoints to be consumed only by components
+of the integration.
+
+GENERAL INFORMATION
+===================
+
+. API Name: locationService
+
+. Version: 1.0 (redundant because maintained by the source control branch name)
+
+. Intended Audience: Project(s) likely to consume this API at time of analysis
+ 
+. Targeted Resource: Location (object)
+
+. Other required resources: GeoCoding, Brand
+
+. API Layer: None (if this is the Service level spec) or mention Experience, Process or System if API level spec.
+
+. Primary Endpoint (URL)
+
+. Number of Methods: 5
+
+. List of Methods: Note: each method will specified individually in sub sections
+	. AddLocation
+	. UpdateLocation
+	. Remove Location
+	. Find Location
+	. LocationList
+
+. Authentication mechanism: one-way, two-way SSL, clientID/ClientSecret, OAuth, SAML?
+
+. Canonical model format: POJO, JSON, XML
+
+. Canonical model version
+
+API Processing Strategy: Synchronous or Asynchronous
+REST VERB: PUT, POST, GET, DELETE, PATCH...
+Schema validation (json schema). Define data-types and ENUMs
+
+Release schedule, version{id}
+
+SERVICE LEVELS ESTIMATES
+========================
+. Estimated use (frequency)
+. Estimated Request payload size, response payload size - could be moved in method sub-section, or take method with the highest requirement.
+ volume of data this API needs to support?
+. SLA (may be method by method)
+. Service Timeout
+
+EXCEPTION HANDLING
+==================
++ SYNCHRONOUS behavior
+. Client-side expected error handling: HTTP response with 500, with Error Json object, CloudHub notification, DLQ, Error log entry, exception manifest, Email, SMS, other
+
+. Provision for roll back/undo/reverse operation in case a transaction results in data corruption or dirty data state?
+
++ ASYNCHRONOUS BEHAVIOR
+Does the requestor expect an immediate ACK for fire-and-forget type of processing?
+What is the format of this ACK (JSON object)?
+Once the response has been processed, what callback mechanism does the client app (or another receiver) support? REST, SOAP, EMAIL, SMS, Message Queue, other? 
+What is the callback response format (JSON, text, other)?
+If client supports REST callback (ideal), what is the URL, REST verb and specifics of this callback? (query strings params or http headers,...)
+
+AVAILABILITY - FALLBACK
+=======================
+. If Service is unavailable what is the fallback endpoint to invoke?
+
+MONITORING & TRACEABILITY
+=========================
+. Define traceability headers (common to all 3 API layers). Suggesting: SourceSystem (ENUM), TargetSystem (ENUM), transactionID (a UUID).
+
+MAPPINGS
+========
+Not in scope in this spec.
+Mapping analysis must be complete prior to establishing an API.
+The API contract at the experience layer will be cognizant of the data passed and returned to the service consumers.
+
+PUBSUB
+======
+Process and system layers will behave as publishers and subscribers of specific business events (topics)
+. What topic is this service publishing to?
+. What topic is this service subscribing to?
+N/A for synchronous processing
+
+WORKFLOWS
+=========
+Textual description of:
+. the overall workflow (consumer to experience api, through all api layers, to the back-end and back)
+. the process layer workflow.
+This will nicely enhance the companion diagram and relate sequence of events, routing specifics to other services or pubsub topics.
+The process layer could be a simple service or a complex orchestrated service invoking other micro-services. 
+
+Method by Method
+================
+Method #1: AddLocation
+	. API Processing Strategy: Synchronous or Asynchronous
+	. REST VERB: PUT, POST, GET, DELETE, PATCH...
+	. Schema validation (json schema): For PUT, POST, PATCH, DELETE only. Define data-types and ENUMs
+	. If async,
+		. Define the synchronous Acknowledgment (ACK upon delivery of request payload)
+		. Define callback mechanism and URL if REST
+		. Define callback Response payload
+		. Define other special conditions
+	
+Method #2: UpdateLocation
+...
+do the same for all 5 methods
+
+Note: Occasionally methods don't follow the same processing strategy especially in Legacy Systems environments
+PUT & POST could be synchronous, GETs could be async or vice-versa.
+
+SPECIAL HANDLING
+================
+If Client system does not support REST but can only send a file Does the API needs a file-to-REST pre-processor?
+How does the API respond to such client? Send a processing manifest, a simple ACK, an email,...? 
+
+
+
+

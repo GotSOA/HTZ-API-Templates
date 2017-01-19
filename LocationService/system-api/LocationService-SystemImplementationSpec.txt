@@ -1,0 +1,16 @@
+Spec for LocationService Implementation (for lack of a better name)
+
+
+This doc describes how the system-api encapsulates the back-end system,
+how it interracts with it to invoke its supported operations.
+
+Define CRUD if back-end system is a database, a cache...
+Define operations and contract if back-end syste is a SaaS exposing a REST API
+or a SOAP API.
+
+Define messaging behavior if back-end uses message queues as an integration mechanism 
+Could be quite common at Hertz with Websphere MQ.
+
+If the back-end system exposes a well-defined, industry standard REST API it is likely 
+that the system-api layer may not be necessary (optional).
+ 

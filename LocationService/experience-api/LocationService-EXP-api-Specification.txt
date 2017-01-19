@@ -1,0 +1,28 @@
+Spec for LocationService EXPERIENCE API
+
+{WIP}
+Cover ALL the topics listed in my quick demo 
+the other day because it is the service external facing API.
+
+The Diagram (companion file in same folder) should describe 
+this time only the workflow between consumer and experience API.
+
+The Diagram should be explicit in order to describe the service
+endpoints behavior (sync or async).
+ 
+Describe in this document behaviors not easily translated by RAML
+
+An example would be: a reliable acquisition pattern across experience
+and process api.
+
+Client/user/consumer invokes the experience API, experience then 
+invokes the process API. Process API runs some business validation,
+drops the request payload onto an async topic queue (one-way)
+then returns a synchronous ACK to experience, experience back to client
+indicating that the payload has been safely delivered and is in process.
+
+Any endpoint supporting an async behavior must have a provision
+for a configurable callback address (optionally transport).
+Could be an email, a callback URL, a file generated...
+
+   
