@@ -31,7 +31,7 @@ Quality Assurance: GAP
 	. Integration Tests: GAP
 	. Acceptance Criteria: I moved it as sub-section of QA, need an acceptance criteria for each use case
 	
-Error Handling: I feel that all APIs should be relying on a unique ErrorHandling / Notification system (built as a system layer app)
+Error Handling: partially covered. I feel that all APIs should be relying on a unique ErrorHandling / Notification system (built as a system layer app)
 				For each API, we should define how to report errors - commonly to all API methods or on a use case by use case basis (*).
 				(*) Required to define the unhappy path use cases for unit testing and integration testing.
 				
