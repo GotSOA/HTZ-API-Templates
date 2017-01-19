@@ -1,0 +1,33 @@
+{ 
+	"title": "some_sample_operation_POST",	
+	"required": false,
+	"type": "object",
+	"properties": {
+	
+		"import": {
+			"type": "object",
+			"properties": {
+				"CONTRACTHEADER": {
+					"type": "object",
+					"properties": {
+						"DOC_NO": {
+							"type": "string"
+						},
+						"DOC_TYPE_CA": {
+							"type": "string"
+						},
+						"RES_KEY": {
+							"type": "string"
+						},
+						"FIKEY": {
+							"type": "string"
+						},
+						"PAYMENT_FORM_REF": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}	
+	}
+}
