@@ -4,7 +4,7 @@ Audience: my definition of audience was more about projects/systems that will co
 Use Cases/Applications: GAP
 Requirements 
 	. Business Requirements: GAP
-	. Functionl Requirements: GAP
+	. Functional Requirements: GAP
 	. Technical Requirements: NEW
 Assumptions (both Business and Technical): GAP
 User Stories (I removed 'Technical Overview' because should not be part of user stories)
